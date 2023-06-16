@@ -15,12 +15,11 @@ npm install --save damned-hook
 ### useStateRef
 We got many closure problems when a callback contain the state variable, as we know, it never changed. like this code:
 ```tsx
-import React, { useEffect } from 'react'
-
-import { useStateRef } from 'damned-hook';
+import React, { useEffect, useState } from 'react'
 
 const App = () => {
-  const [state, setState] = useStateRef(0);
+
+  const [state, setState] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -48,16 +47,18 @@ import React, { useEffect } from 'react'
 import { useStateRef } from 'damned-hook'
 
 const App = () => {
+
   const [ref, setState] = useStateRef(0)
+  
   useEffect(() => {
     const timer = setInterval(() => {
       console.log(ref.current)
       setState(ref.current+1)
       console.log(ref.current) // change synchronously
-
     }, 1000)
     return () => clearInterval(timer)
   }, [ref, setState])
+  
   return <div>
     current count: {ref.current}
   </div>
