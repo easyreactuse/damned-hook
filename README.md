@@ -39,7 +39,7 @@ export default App
 ```
 
 
-So we can solve those trouble by use the "use StateRef"
+So we can solve those trouble by use the "useStateRef" hook:
 
 ```tsx
 import React, { useEffect } from 'react'
