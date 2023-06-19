@@ -13,7 +13,7 @@ npm install --save damned-hook
 ## Usage
 
 ### useStateRef
-We got many closure problems when a callback contain the state variable, as we know, it never changed. like this code:
+We got many closure problems when a callback contain the state variable, as we know, it‘s value won't change and it's counterintuitive. like this code:
 ```tsx
 import React, { useEffect, useState } from 'react'
 
