@@ -1,10 +1,13 @@
 {
   "name": "damned-hook",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "easy to use react hook",
   "author": "",
   "license": "MIT",
-  "repository": "/damned-hook",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/easyreactuse/damned-hook"
+  },
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.tsx",
@@ -25,10 +28,6 @@
   },
   "peerDependencies": {
     "react": ">=16.0.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/easyreactuse/damned-hook"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -59,7 +58,7 @@
     "prettier": "^2.0.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "^3.4.1",
+    "react-scripts": "^5.0.1",
     "typescript": "^3.7.5"
   },
   "files": [

@@ -6,9 +6,9 @@ const App = () => {
   const [ref, setState] = useStateRef(0)
   useEffect(() => {
     const timer = setInterval(() => {
-      console.log(ref.current)
+      console.log(ref.current, 'before')
       setState(ref.current+1)
-      console.log(ref.current)
+      console.log(ref.current, 'end')
 
     }, 1000)
     return () => clearInterval(timer)

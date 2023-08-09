@@ -5,8 +5,10 @@ function useStateRefHook(value) {
     state = _useState[0],
     setState = _useState[1];
   var ref = useRef(state);
-  ref.current = state;
-  return [ref, setState];
+  return [ref, function (value) {
+    ref.current = value;
+    setState(value);
+  }];
 }
 
 var useStateRef = useStateRefHook;
