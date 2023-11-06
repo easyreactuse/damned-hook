@@ -13,33 +13,7 @@ npm install --save damned-hook
 ## Usage
 
 ### useStateRef
-We got many closure problems when a callback contain the state variable, as we know, it‘s value won't change and it's counterintuitive. like this code:
-```tsx
-import React, { useEffect, useState } from 'react'
-
-const App = () => {
-
-  const [state, setState] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      console.log(state) // state always be 0
-      setState(state + 1)
-      console.log(state) // won't change
-    }, 1000)
-    return () => clearInterval(timer)
-  }, [])
-
-  return <div>
-    current count: {state}
-  </div>
-}
-
-export default App
-```
-
-
-So we can solve those trouble by use the "useStateRef" hook:
+Merge useState and useRef to solve some closure problems.
 
 ```tsx
 import React, { useEffect } from 'react'
@@ -50,14 +24,11 @@ const App = () => {
 
   const [ref, setState] = useStateRef(0)
   
-  useEffect(() => {
-    const timer = setInterval(() => {
-      console.log(ref.current)
-      setState(ref.current+1)
+  setInterval(() => {
+      console.log(ref.current) // update every seconds
+      setState(ref.current+1) // can trigger dom update.
       console.log(ref.current) // change synchronously
     }, 1000)
-    return () => clearInterval(timer)
-  }, [ref, setState])
   
   return <div>
     current count: {ref.current}
@@ -66,6 +37,31 @@ const App = () => {
 
 export default App
 
+```
+
+### withComposition
+It's a hoc function for create the input component which compatible with composited language, like Chinese etc.
+```tsx
+import { withComposition } from 'damned-hook';
+const ChineseInput = withComposition('input');
+
+const ChineseInputSample = () => {
+  const [value, setValue] = useState('');
+  const [finalValue, setFinalValue] = useState(value);
+  return (
+    <div>
+      <label>please input chinese or other composised language </label>
+      <ChineseInput
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        onFinalChange={(e) => setFinalValue(e.target.value)}
+      />
+      <label> value: {value} ; </label>
+
+      <label>final value: {finalValue}</label>
+    </div>
+  );
+};
 ```
 
 ## License
