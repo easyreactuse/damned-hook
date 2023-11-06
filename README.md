@@ -41,6 +41,8 @@ export default App
 
 ### withComposition
 It's a hoc function for create the input component which compatible with composited language, like Chinese etc.
+![file](https://github.com/easyreactuse/damned-hook/assets/136778676/a8f27d16-381b-4a2c-a1a9-de6790589146)
+
 ```tsx
 import { withComposition } from 'damned-hook';
 const ChineseInput = withComposition('input');
